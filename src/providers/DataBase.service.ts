@@ -11,17 +11,22 @@ export class DBservice {
   constructor(private firebase: AngularFire) {
   }
   login(email, passwd) {
-    this.firebase.auth.login({
+    return new Promise(resolve =>
+    {
+      this.firebase.auth.login({
       email: email,
       password: passwd
-    }).then(
-      (success) => {
-        localStorage.setItem("useruid", success.uid);
-      }
-    ).catch(
-      (error) => {
-      }
-    );
+      }).then(
+        (success) => {
+          localStorage.setItem("useruid", success.uid);
+          resolve(true);
+        }
+      ).catch(
+        (error) => {
+          resolve(false);
+        }
+      )
+    });
   }
 
   deslogueo(){

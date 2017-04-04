@@ -14,8 +14,11 @@ export class Page1 {
   }
 
   login(form: any){
-    var resp = this.db.login(form.value.email,form.value.password);
-    console.log(resp);
+    this.db.login(form.value.email,form.value.password).then(data => {
+      if (data){
+        this.navCtrl.push(Page2);
+      }
+    });
   }
   logout(){
     this.db.deslogueo();

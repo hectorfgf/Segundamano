@@ -33,9 +33,9 @@ export class Page2 {
   }
   logout(){
     this.db.deslogueo();
+    this.navCtrl.popToRoot();
   }
   itemTapped(event, item) {
-    // That's right, we're pushing to ourselves!
     this.navCtrl.push(Page2, {
       item: item
     });
