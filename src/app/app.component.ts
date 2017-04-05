@@ -10,6 +10,7 @@ import {DBservice} from '../providers/providers';
 import {LoginPage} from "../pages/login/login";
 import {LogoutComponent} from "../components/logout/logout";
 import {CrearCuentaPage} from "../pages/crear-cuenta/crear-cuenta";
+import {PerfilPage} from "../pages/perfil/perfil";
 
 @Component({
   templateUrl: 'app.html',
@@ -39,6 +40,7 @@ export class MyApp {
       ];
     }else{
       this.pages = [
+        { title: 'Perfil', component: PerfilPage },
         { title: 'Articulos en venta', component: Page1 },
         { title: 'Page Two', component: Page2 }
       ];
@@ -70,6 +72,7 @@ export class MyApp {
       ];
     }else{
       this.pages = [
+        { title: 'Perfil', component: PerfilPage },
         { title: 'Articulos en venta', component: Page1 },
         { title: 'Page Two', component: Page2 }
       ];

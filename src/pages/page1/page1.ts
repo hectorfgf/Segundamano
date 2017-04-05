@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {NavController,} from 'ionic-angular';
 
 import {DBservice} from '../../providers/providers';
-import {FirebaseListObservable, AngularFire} from "angularfire2";
+import {FirebaseListObservable} from "angularfire2";
 
 
 @Component({

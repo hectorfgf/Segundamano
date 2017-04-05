@@ -11,6 +11,7 @@ import {DBservice} from '../providers/providers';
 import { AngularFireModule, AuthMethods, AuthProviders } from 'angularfire2';
 import {LoginPage} from "../pages/login/login";
 import {CrearCuentaPage} from "../pages/crear-cuenta/crear-cuenta";
+import {PerfilPage} from "../pages/perfil/perfil";
 
 
 export const firebaseConfig = {
@@ -33,7 +34,8 @@ export const firebaseAuthConfig = {
     Page1,
     Page2,
     LoginPage,
-    CrearCuentaPage
+    CrearCuentaPage,
+    PerfilPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -45,7 +47,8 @@ export const firebaseAuthConfig = {
     Page1,
     Page2,
     LoginPage,
-    CrearCuentaPage
+    CrearCuentaPage,
+    PerfilPage
   ],
   providers: [
     StatusBar,
