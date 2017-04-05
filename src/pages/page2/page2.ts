@@ -4,6 +4,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 
 import {DBservice} from '../../providers/providers';
+import {Page1} from "../page1/page1";
 
 @Component({
   selector: 'page-page2',
@@ -32,6 +33,10 @@ export class Page2 {
     }
   }
 
+  logout(){
+    this.db.deslogueo();
+    this.navCtrl.setRoot(Page1);
+  }
   itemTapped(event, item) {
     this.navCtrl.push(Page2, {
       item: item

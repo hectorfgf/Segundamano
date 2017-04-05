@@ -31,12 +31,12 @@ export class MyApp {
     if (this.user[0] == null) {
       this.pages = [
         { title: 'Login', component: LoginPage },
-        { title: 'Articulos en venta', component: LoginPage },
+        { title: 'Articulos en venta', component: Page1 },
         { title: 'Page Two', component: Page2 }
       ];
     }else{
       this.pages = [
-        { title: 'Articulos en venta', component: LoginPage },
+        { title: 'Articulos en venta', component: Page1 },
         { title: 'Page Two', component: Page2 }
       ];
     }
@@ -57,5 +57,18 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+    localStorage.getItem("useruid") ? this.user[0] = localStorage.getItem("useruid") : this.user[0] = null;
+    if (this.user[0] == null) {
+      this.pages = [
+        { title: 'Login', component: LoginPage },
+        { title: 'Articulos en venta', component: Page1 },
+        { title: 'Page Two', component: Page2 }
+      ];
+    }else{
+      this.pages = [
+        { title: 'Articulos en venta', component: Page1 },
+        { title: 'Page Two', component: Page2 }
+      ];
+    }
   }
 }

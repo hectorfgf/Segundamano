@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {DBservice} from "../../providers/DataBase.service";
-import {Page2} from "../page2/page2";
+import {Page1} from "../page1/page1";
+
 
 @Component({
   selector: 'page-login',
@@ -14,12 +15,13 @@ export class LoginPage {
   login(form: any){
     this.db.login(form.value.email,form.value.password).then(data => {
       if (data){
-        this.navCtrl.push(Page2);
+        this.navCtrl.setRoot(Page1);
       }
     });
   }
   logout(){
     this.db.deslogueo();
+    this.navCtrl.setRoot(Page1);
   }
 
 }

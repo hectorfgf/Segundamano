@@ -9,6 +9,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import {DBservice} from '../providers/providers';
 import { AngularFireModule, AuthMethods, AuthProviders } from 'angularfire2';
+import {LoginPage} from "../pages/login/login";
 
 
 export const firebaseConfig = {
@@ -28,7 +29,8 @@ export const firebaseAuthConfig = {
   declarations: [
     MyApp,
     Page1,
-    Page2
+    Page2,
+    LoginPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -38,7 +40,8 @@ export const firebaseAuthConfig = {
   entryComponents: [
     MyApp,
     Page1,
-    Page2
+    Page2,
+    LoginPage
   ],
   providers: [
     StatusBar,
