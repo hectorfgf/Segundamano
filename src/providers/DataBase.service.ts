@@ -28,8 +28,25 @@ export class DBservice {
       )
     });
   }
+  createNewUser(email,password){
+    return new Promise(resolve=>{
+      this.firebase.auth.createUser({
+        email: email,
+        password: password
+      }).then((echo) => {resolve(echo.uid)});
+    });
+  }
+  addUserData(uid, name, email, telefono){
+    return new Promise(resolve=>{
+      this.firebase.database.object('/usuarios/' + uid).set({
+        nombre: name,
+        correo: email,
+        telefono: telefono
+      }).then(()=>{resolve(true);});
+    });
+  }
 
-  createNewUser(name,email, password, telefono) {
+  createNewUser2(name,email, password, telefono) {
     return new Promise(resolve => {
       this.firebase.auth.createUser({
         email: email,
@@ -42,6 +59,7 @@ export class DBservice {
           telefono: telefono
         }).then(() => {
           console.log("AÑADI en la cuenta de:" + sucess.uid);
+          alert("añadi usuario "+ sucess.uid);
           resolve(true);
         });
       });
