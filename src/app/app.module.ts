@@ -13,11 +13,12 @@ import {LoginPage} from "../pages/login/login";
 
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyCoBphaSZMIxIRGpe76PwQi3T3gvtLnfoo",
-  authDomain: "segundamano-138da.firebaseapp.com",
-  databaseURL: "https://segundamano-138da.firebaseio.com",
-  storageBucket: "segundamano-138da.appspot.com",
-  messagingSenderId: "338357805392"
+  apiKey: "AIzaSyBuwR5hB4awktamkaZ1BqoHSYzVdAHfngE",
+  authDomain: "daw2-1cd21.firebaseapp.com",
+  databaseURL: "https://daw2-1cd21.firebaseio.com",
+  projectId: "daw2-1cd21",
+  storageBucket: "daw2-1cd21.appspot.com",
+  messagingSenderId: "753805666985"
 };
 
 export const firebaseAuthConfig = {
