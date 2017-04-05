@@ -8,6 +8,7 @@ import { Page2 } from '../pages/page2/page2';
 
 import {DBservice} from '../providers/providers';
 import {LoginPage} from "../pages/login/login";
+import {LogoutComponent} from "../components/logout/logout";
 
 @Component({
   templateUrl: 'app.html',
@@ -23,7 +24,7 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private db: DBservice) {
     this.initializeApp();
     localStorage.getItem("useruid") ? this.user[0] = localStorage.getItem("useruid") : this.user[0] = null;
     this.rootPage = Page1;
@@ -70,5 +71,14 @@ export class MyApp {
         { title: 'Page Two', component: Page2 }
       ];
     }
+  }
+  logout(){
+    this.db.deslogueo();
+    this.pages = [
+      { title: 'Login', component: LoginPage },
+      { title: 'Articulos en venta', component: Page1 },
+      { title: 'Page Two', component: Page2 }
+    ];
+    this.nav.setRoot(Page1);
   }
 }
