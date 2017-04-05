@@ -1,0 +1,43 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>CrearCuenta</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <form #form="ngForm" (ngSubmit)="createNewUser(form)">
+    <ion-list>
+
+      <ion-item style="padding-left: 0" class="inputs">
+        <ion-label style="color: white;">Nombre</ion-label>
+        <ion-input type="text" name="name" ngModel required></ion-input>
+      </ion-item>
+
+      <ion-item style="padding-left: 0" class="inputs">
+        <ion-label style="color: white;">Email</ion-label>
+        <ion-input type="email" name="email" ngModel required></ion-input>
+      </ion-item>
+
+      <ion-item style="padding-left: 0" class="inputs">
+        <ion-label style="color: white;">Password</ion-label>
+        <ion-input type="password" name="password" ngModel required></ion-input>
+      </ion-item>
+
+      <ion-item style="padding-left: 0" class="inputs">
+        <ion-label style="color: white;">telefono</ion-label>
+        <ion-input type="number" name="telefono" ngModel required></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <button style="margin-top: 30px;" type="submit" ion-button block [disabled]="!form.value.email || !form.value.password || !form.value.telefono || !form.value.name">Registrate</button>
+  </form>
+
+</ion-content>

@@ -9,6 +9,7 @@ import { Page2 } from '../pages/page2/page2';
 import {DBservice} from '../providers/providers';
 import {LoginPage} from "../pages/login/login";
 import {LogoutComponent} from "../components/logout/logout";
+import {CrearCuentaPage} from "../pages/crear-cuenta/crear-cuenta";
 
 @Component({
   templateUrl: 'app.html',
@@ -33,7 +34,8 @@ export class MyApp {
       this.pages = [
         { title: 'Login', component: LoginPage },
         { title: 'Articulos en venta', component: Page1 },
-        { title: 'Page Two', component: Page2 }
+        { title: 'Page Two', component: Page2 },
+        { title: 'Crear cuenta', component: CrearCuentaPage}
       ];
     }else{
       this.pages = [
@@ -63,7 +65,8 @@ export class MyApp {
       this.pages = [
         { title: 'Login', component: LoginPage },
         { title: 'Articulos en venta', component: Page1 },
-        { title: 'Page Two', component: Page2 }
+        { title: 'Page Two', component: Page2 },
+        { title: 'Crear cuenta', component: CrearCuentaPage}
       ];
     }else{
       this.pages = [
@@ -77,7 +80,8 @@ export class MyApp {
     this.pages = [
       { title: 'Login', component: LoginPage },
       { title: 'Articulos en venta', component: Page1 },
-      { title: 'Page Two', component: Page2 }
+      { title: 'Page Two', component: Page2 },
+      { title: 'Crear cuenta', component: CrearCuentaPage}
     ];
     this.nav.setRoot(Page1);
   }

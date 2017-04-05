@@ -29,6 +29,25 @@ export class DBservice {
     });
   }
 
+  createNewUser(name,email, password, telefono) {
+    return new Promise(resolve => {
+      this.firebase.auth.createUser({
+        email: email,
+        password: password
+      }).then((sucess) => {
+        console.log("cree la cuenta de:" + sucess.uid);
+        this.firebase.database.object('/usuarios/' + sucess.uid).set({
+          nombre: name,
+          correo: email,
+          telefono: telefono
+        }).then(() => {
+          console.log("AÑADI en la cuenta de:" + sucess.uid);
+          resolve(true);
+        });
+      });
+    });
+  }
+
   deslogueo(){
     this.firebase.auth.logout();
     localStorage.removeItem("useruid");
