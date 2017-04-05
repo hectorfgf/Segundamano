@@ -46,24 +46,8 @@ export class DBservice {
     });
   }
 
-  createNewUser2(name,email, password, telefono) {
-    return new Promise(resolve => {
-      this.firebase.auth.createUser({
-        email: email,
-        password: password
-      }).then((sucess) => {
-        console.log("cree la cuenta de:" + sucess.uid);
-        this.firebase.database.object('/usuarios/' + sucess.uid).set({
-          nombre: name,
-          correo: email,
-          telefono: telefono
-        }).then(() => {
-          console.log("AÑADI en la cuenta de:" + sucess.uid);
-          alert("añadi usuario "+ sucess.uid);
-          resolve(true);
-        });
-      });
-    });
+  getArticles(){
+    return this.firebase.database.list('/articulos');
   }
 
   deslogueo(){

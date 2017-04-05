@@ -9,7 +9,7 @@
 
 <ion-content padding>
 
-  <ion-card *ngFor="let a of articulos | async" class="dimension-card">
+  <ion-card *ngFor="let a of articulos | async" class="dimension-card" (click)="probar()">
     <ion-item>
       <ion-row>
         <ion-col>
@@ -22,7 +22,7 @@
       </ion-row>
     </ion-item>
     <div class="dimension-photo">
-      <img src="{{a.imagen}}">
+      <img src="{{a.imagen}}" class="imagen">
     </div>
 
 

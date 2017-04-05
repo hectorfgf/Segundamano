@@ -13,10 +13,8 @@ export class Page1 {
 
   articulos: FirebaseListObservable<any>;
 
-  constructor(public navCtrl: NavController,private db: DBservice, public firebase: AngularFire) {
-
-    this.articulos= firebase.database.list('/articulos');
-    console.log("articulos: " + this.articulos);
+  constructor(public navCtrl: NavController,private db: DBservice) {
+    this.articulos = this.db.getArticles();
   }
 
   probar(){
