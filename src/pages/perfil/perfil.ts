@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import {DBservice} from "../../providers/DataBase.service";
+import {FirebaseListObservable} from "angularfire2";
 
 /*
   Generated class for the Perfil page.
@@ -13,8 +15,19 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class PerfilPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
+  uid:any;
+  profile: FirebaseListObservable<any>;
+  categorias: FirebaseListObservable<any>;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private db: DBservice) {
+    this.uid=localStorage.getItem("useruid");
+    this.profile = this.db.getProfile(this.uid);
+  }
+
+  comprobar(){
+    console.log(this.profile);
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad PerfilPage');
   }

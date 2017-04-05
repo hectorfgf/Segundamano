@@ -49,6 +49,9 @@ export class DBservice {
     });
   }
 
+  getProfile(uid){
+    return this.firebase.database.list('/usuarios/'+uid);
+  }
   getArticles(){
     return this.firebase.database.list('/articulos');
   }

@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -9,7 +9,17 @@
 
 </ion-header>
 
-
 <ion-content padding>
-  <div>Esto sera el perfil</div>
+  <div *ngFor="let a of profile | async">
+    <div class="contenedor"><img class="imagen" *ngIf="a.$key == 'imagen'" src="{{a.$value}}"></div>
+  </div>
+  <div *ngFor="let a of profile | async">
+    <ion-list *ngIf="a.$key != 'imagen'">
+      <ion-item>
+        <label>{{a.$key}}:</label>
+        {{a.$value}}
+      </ion-item>
+    </ion-list>
+  </div>
+
 </ion-content>
