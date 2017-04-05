@@ -53,6 +53,16 @@ export class DBservice {
     return this.firebase.database.list('/articulos');
   }
 
+  getArticles2(){
+    return this.firebase.database.object('/articulos');
+  }
+
+
+  getCategorias(){
+    return this.firebase.database.list('/categoria');
+  }
+
+
   deslogueo(){
     this.firebase.auth.logout();
     localStorage.removeItem("useruid");
