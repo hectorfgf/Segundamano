@@ -7,6 +7,7 @@ import { Page1 } from '../pages/page1/page1';
 import { Page2 } from '../pages/page2/page2';
 
 import {DBservice} from '../providers/providers';
+import {LoginPage} from "../pages/login/login";
 
 @Component({
   templateUrl: 'app.html',
@@ -25,16 +26,21 @@ export class MyApp {
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
     localStorage.getItem("useruid") ? this.user[0] = localStorage.getItem("useruid") : this.user[0] = null;
-    if (this.user[0] == null) {
-      this.rootPage = Page1;
-    }else{
-      this.rootPage = Page2;
-    }
+    this.rootPage = Page1;
     // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Page One', component: Page1 },
-      { title: 'Page Two', component: Page2 }
-    ];
+    if (this.user[0] == null) {
+      this.pages = [
+        { title: 'Login', component: LoginPage },
+        { title: 'Articulos en venta', component: LoginPage },
+        { title: 'Page Two', component: Page2 }
+      ];
+    }else{
+      this.pages = [
+        { title: 'Articulos en venta', component: LoginPage },
+        { title: 'Page Two', component: Page2 }
+      ];
+    }
+
 
   }
 

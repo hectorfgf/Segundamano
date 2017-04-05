@@ -16,22 +16,4 @@
 
   <button ion-button secondary menuToggle>Toggle Menu</button>
 
-  <form #form="ngForm" (ngSubmit)="login(form)">
-    <ion-list>
-      <ion-item style="padding-left: 0" class="inputs">
-        <ion-label style="color: white;">Username</ion-label>
-        <ion-input type="email" name="email" ngModel required></ion-input>
-      </ion-item>
-
-      <ion-item style="padding-left: 0" class="inputs">
-        <ion-label style="color: white;">Password</ion-label>
-        <ion-input type="password" name="password" ngModel required></ion-input>
-      </ion-item>
-
-    </ion-list>
-
-    <button style="margin-top: 30px;" type="submit" ion-button block [disabled]="!form.value.email || !form.value.password">Login</button>
-
-  </form>
- <button style="margin-top: 30px;" ion-button (click)="logout()">LogOut</button>
 </ion-content>
