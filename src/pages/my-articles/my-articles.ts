@@ -4,6 +4,7 @@ import {NavController,} from 'ionic-angular';
 import {DBservice} from '../../providers/providers';
 import {FirebaseListObservable} from "angularfire2";
 import {AddArticlePage} from "../add-article/add-article";
+import {ArticlePage} from "../article/article";
 
 @Component({
   selector: 'page-my-articles',
@@ -11,8 +12,6 @@ import {AddArticlePage} from "../add-article/add-article";
 })
 export class MyArticlesPage {
 
-  articulos: FirebaseListObservable<any>;
-  articulos2: FirebaseListObservable<any>;
   arrayarticulos = [];
   user:any;
   i=0;
@@ -30,23 +29,21 @@ export class MyArticlesPage {
                 lugar: snapshot2.val().lugar,
                 precio: snapshot2.val().precio,
                 titulo: snapshot2.val().titulo,
-                imagen: snapshot2.val().imagen
+                imagen: snapshot2.val().imagen,
+                key: snapshot2.key
               }
               this.i = this.i + 1;
-              console.log(this.arrayarticulos);
             };
-          })
+          });
         });
       });
     });
-
   }
 
-  probar(){
-    console.log("articulos: " + this.articulos);
-  }
   addArticulo(){
     this.navCtrl.push(AddArticlePage);
   }
-
+  articulo(key: any){
+    this.navCtrl.push(ArticlePage, key);
+  }
 }

@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Articulo</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div *ngFor="let i of informacion | async">
+    <div *ngIf="i.$key == anuncio">
+      <h1>{{i.titulo}}</h1>
+      <div class="linea"></div>
+      <div class="dimension-photo">
+        <img src="{{i.imagen}}" class="imagen">
+      </div>
+      <h3>Descripción</h3>
+      <div class="linea"></div>
+      <p>{{i.descripcion}}</p>
+      <h3>Precio</h3>
+      <div class="linea"></div>
+      <p>{{i.precio}}€</p>
+      <h3>Localización de venta</h3>
+      <div class="linea"></div>
+      <p>{{i.lugar}}</p>
+    </div>
+  </div>
+
+  <ion-fab right bottom>
+    <button ion-fab color="blue" (click)="favoritos()"><ion-icon name="star"></ion-icon></button>
+  </ion-fab>
+
+</ion-content>
