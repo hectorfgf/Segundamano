@@ -11,7 +11,7 @@
 
 <ion-content padding>
   <div *ngFor="let a of profile | async">
-    <div class="contenedor"><img class="imagen" *ngIf="a.$key == 'imagen'" src="{{a.$value}}"></div>
+    <div class="contenedor"><img class="imagen" *ngIf="a.$key == 'imagen'" src="{{a.$value}}" (click)="changeImage()"></div>
   </div>
   <ion-list >
   <div *ngFor="let a of profile | async">
@@ -39,5 +39,7 @@
     </ion-item>
   </div>
   </ion-list>
+
+
 
 </ion-content>

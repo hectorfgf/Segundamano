@@ -28,9 +28,10 @@
       <ion-item style="padding-left: 0" class="inputs">
         <ion-textarea placeholder="Escriba una descripción..." name="descripcion" ngModel required></ion-textarea>
       </ion-item>
+      <button ion-button full (click)="addImage()">Añadir foto</button>
+      <img *ngIf="base64Image" [src]="domSanitizer.bypassSecurityTrustUrl(base64Image)">
       <button style="margin-top: 30px;" type="submit" ion-button>Añadir</button>
     </ion-list>
   </form>
-
 
 </ion-content>

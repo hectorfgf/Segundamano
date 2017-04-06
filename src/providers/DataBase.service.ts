@@ -66,7 +66,7 @@ export class DBservice {
   changePhone(numero, uid){
     this.firebase.database.object("/usuarios/"+uid).update({telefono: numero});
   }
-  addAnuncio (categoria, descripcion, lugar, precio, titulo){
+  addAnuncio (categoria, descripcion, lugar, precio, titulo,imagen){
     return new Promise ( resolve => {
       let aux = this.firebase.database.list('/articulos').push({
         categoria: categoria,
@@ -74,7 +74,7 @@ export class DBservice {
         lugar: lugar,
         precio: precio,
         titulo: titulo,
-        imagen: this.imagendefecto
+        imagen: imagen
       });
 
       let uid = localStorage.getItem('useruid')
@@ -85,5 +85,8 @@ export class DBservice {
   }
   getCategorias(){
     return this.firebase.database.list('/categoria');
+  }
+  changePhoto(photo, uid){
+    this.firebase.database.object("/usuarios/"+uid).update({imagen: photo});
   }
 }

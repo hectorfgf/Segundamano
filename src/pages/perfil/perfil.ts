@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import {NavController, NavParams, AlertController} from 'ionic-angular';
+import {NavController, NavParams, AlertController, Platform} from 'ionic-angular';
 import {DBservice} from "../../providers/DataBase.service";
 import {FirebaseListObservable} from "angularfire2";
+
+import { DomSanitizer } from '@angular/platform-browser';
+import { Camera, CameraOptions } from 'ionic-native';
 
 /*
   Generated class for the Perfil page.
@@ -18,11 +21,25 @@ export class PerfilPage {
 
   uid:any;
   profile: FirebaseListObservable<any>;
+  base64Image: string;
 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private db: DBservice, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public platform: Platform, private db: DBservice, public alertCtrl: AlertController,public domSanitizer: DomSanitizer) {
     this.uid=localStorage.getItem("useruid");
     this.profile = this.db.getProfile(this.uid);
+  }
+  takePicture(): void {
+    this.platform.ready().then(() => {
+      const options: CameraOptions = {
+        destinationType: Camera.DestinationType.DATA_URL,
+        quality: 75
+      };
+      Camera.getPicture(options).then((imageData) => {
+        this.base64Image = 'data:image/jpeg;base64,' + imageData;
+        this.db.changePhoto(this.base64Image,this.uid);
+      }, (error) => {
+        console.log(error);
+      });
+    });
   }
 
   comprobar(){
@@ -90,4 +107,22 @@ export class PerfilPage {
     popup3.present();
   }
 
+  changeImage(){
+    let popup4 = this.alertCtrl.create({
+      title: 'Cambiar imagen de perfil',
+      message: 'Toma la nueva foto',
+      buttons: [
+        {
+          text: 'Cancelar'
+        },
+        {
+          text: 'Tomar foto',
+          handler: () => {
+            this.takePicture();
+          }
+        }
+      ]
+    });
+    popup4.present();
+  }
 }
