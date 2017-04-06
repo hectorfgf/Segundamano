@@ -14,10 +14,7 @@
       <ion-row>
         <ion-col>
           <h2>{{a.titulo}}</h2>
-          <p>{{a.precio}}</p>
-        </ion-col>
-        <ion-col>
-          <ion-icon name="md-star-outline" class="position-icon"></ion-icon>
+          <p>{{a.precio}}€</p>
         </ion-col>
       </ion-row>
     </ion-item>
@@ -27,4 +24,9 @@
 
 
   </ion-card>
+
+  <ion-fab right bottom>
+    <button ion-fab color="light" (click)="addArticulo()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
 </ion-content>

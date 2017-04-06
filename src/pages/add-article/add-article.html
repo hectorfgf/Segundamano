@@ -1,0 +1,36 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Añadir Articulo</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <form #form="ngForm" (ngSubmit)="createNewAnuncio(form)">
+    <ion-list>
+      <ion-item style="padding-left: 0" class="inputs">
+        <ion-input  type="text" placeholder="Titulo" name="titulo" ngModel required></ion-input>
+      </ion-item >
+      <ion-item style="padding-left: 0" class="inputs">
+        <ion-input type="text" placeholder="Localización" name="lugar" ngModel required></ion-input>
+      </ion-item>
+      <ion-item style="padding-left: 0" class="inputs">
+        <ion-input type="num" placeholder="Precio" name="precio" ngModel required></ion-input>
+      </ion-item>
+      <ion-item style="padding-left: 0" class="inputs">
+        <ion-select  name="categoria" ngModel required>
+          <ion-option *ngFor="let c of categorias | async">{{c.$key}}</ion-option>
+        </ion-select>
+      </ion-item >
+      <ion-item style="padding-left: 0" class="inputs">
+        <ion-textarea placeholder="Escriba una descripción..." name="descripcion" ngModel required></ion-textarea>
+      </ion-item>
+      <button style="margin-top: 30px;" type="submit" ion-button>Añadir</button>
+    </ion-list>
+  </form>
+
+
+</ion-content>

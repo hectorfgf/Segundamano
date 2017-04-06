@@ -3,6 +3,7 @@ import {NavController,} from 'ionic-angular';
 
 import {DBservice} from '../../providers/providers';
 import {FirebaseListObservable} from "angularfire2";
+import {AddArticlePage} from "../add-article/add-article";
 
 
 @Component({
@@ -19,6 +20,9 @@ export class Page1 {
 
   probar(){
     console.log("articulos: " + this.articulos);
+  }
+  addArticulo(){
+    this.navCtrl.push(AddArticlePage);
   }
 
 }

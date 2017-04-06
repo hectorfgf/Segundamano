@@ -66,4 +66,24 @@ export class DBservice {
   changePhone(numero, uid){
     this.firebase.database.object("/usuarios/"+uid).update({telefono: numero});
   }
+  addAnuncio (categoria, descripcion, lugar, precio, titulo){
+    return new Promise ( resolve => {
+      let aux = this.firebase.database.list('/articulos').push({
+        categoria: categoria,
+        descripcion: descripcion,
+        lugar: lugar,
+        precio: precio,
+        titulo: titulo,
+        imagen: this.imagendefecto
+      });
+
+      let uid = localStorage.getItem('useruid')
+      this.firebase.database.list('/usuarios/' + uid + "/mis-articulos").push(aux.key);
+      this.firebase.database.list('/categoria/' + categoria + "/").push(aux.key);
+      resolve(true);
+    });
+  }
+  getCategorias(){
+    return this.firebase.database.list('/categoria');
+  }
 }
