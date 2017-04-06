@@ -3,12 +3,16 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Anuncios de ventas</ion-title>
+        <ion-title>Anuncios de ventas</ion-title>
+
   </ion-navbar>
+
 </ion-header>
 
-<ion-content padding>
-
+<ion-content padding *ngIf="ok == false">
+  <div item-rigth style="width: 100%">
+    <ion-icon name="search" class="buscar" (click)="categorias()"></ion-icon>
+  </div>
   <ion-card *ngFor="let a of articulos | async" class="dimension-card" (click)="articulo(a.$key)">
     <ion-item>
       <ion-row>
@@ -24,6 +28,31 @@
 
 
   </ion-card>
+
+  <ion-fab *ngIf="user != null" right bottom>
+    <button ion-fab color="light" (click)="addArticulo()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+</ion-content>
+
+
+<ion-content padding *ngIf="ok == true">
+  <div *ngFor="let a of articulos | async">
+  <ion-card   *ngIf="categoria == a.categoria" class="dimension-card" (click)="articulo(a.$key)">
+    <ion-item>
+      <ion-row>
+        <ion-col>
+          <h2>{{a.titulo}}</h2>
+          <p>{{a.precio}}€</p>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+    <div class="dimension-photo">
+      <img src="{{a.imagen}}" class="imagen">
+    </div>
+
+  </ion-card>
+</div>
 
   <ion-fab *ngIf="user != null" right bottom>
     <button ion-fab color="light" (click)="addArticulo()"><ion-icon name="add"></ion-icon></button>
