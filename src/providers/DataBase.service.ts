@@ -92,10 +92,20 @@ export class DBservice {
   getArticlesUser(uid){
     return this.firebase.database.list('/usuarios/'+uid+'/mis-articulos',{ preserveSnapshot: true});
   }
+  getFavUser(uid){
+    return this.firebase.database.list('/usuarios/'+uid+'/mis-favoritos',{ preserveSnapshot: true});
+  }
   getArticle(uid){
     return this.firebase.database.list('/articulos/'+uid,{ preserveSnapshot: true});
   }
   getArticles2(){
     return this.firebase.database.list('/articulos',{ preserveSnapshot: true});
+  }
+  addFav(anuncio, uid){
+    return new Promise ( resolve => {
+      this.firebase.database.list('/usuarios/' + uid + "/mis-favoritos").push(anuncio).then(() =>{
+        resolve(true);
+      });
+    });
   }
 }

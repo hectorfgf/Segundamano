@@ -25,8 +25,8 @@
     </div>
   </div>
 
-  <ion-fab right bottom>
-    <button ion-fab color="blue" (click)="favoritos()"><ion-icon name="star"></ion-icon></button>
+  <ion-fab right bottom *ngIf="this.user != null">
+    <button ion-fab color="blue" (click)="addfav()"><ion-icon name="star"></ion-icon></button>
   </ion-fab>
 
 </ion-content>

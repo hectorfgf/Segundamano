@@ -11,6 +11,7 @@ import {LogoutComponent} from "../components/logout/logout";
 import {CrearCuentaPage} from "../pages/crear-cuenta/crear-cuenta";
 import {PerfilPage} from "../pages/perfil/perfil";
 import {MyArticlesPage} from "../pages/my-articles/my-articles";
+import {MyFavoritesPage} from "../pages/my-favorites/my-favorites";
 
 @Component({
   templateUrl: 'app.html',
@@ -42,6 +43,7 @@ export class MyApp {
         { title: 'Perfil', component: PerfilPage },
         { title: 'Articulos en venta', component: Page1 },
         { title: 'Mis articulos', component: MyArticlesPage },
+        { title: 'Mis Favoritos', component: MyFavoritesPage }
       ];
     }
 
@@ -72,7 +74,8 @@ export class MyApp {
       this.pages = [
         { title: 'Perfil', component: PerfilPage },
         { title: 'Articulos en venta', component: Page1 },
-        { title: 'Mis articulos', component: MyArticlesPage }
+        { title: 'Mis articulos', component: MyArticlesPage },
+        { title: 'Mis Favoritos', component: MyFavoritesPage }
       ];
     }
   }

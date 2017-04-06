@@ -14,6 +14,7 @@ import {PerfilPage} from "../pages/perfil/perfil";
 import {AddArticlePage} from "../pages/add-article/add-article";
 import {MyArticlesPage} from "../pages/my-articles/my-articles";
 import {ArticlePage} from "../pages/article/article";
+import {MyFavoritesPage} from "../pages/my-favorites/my-favorites";
 
 
 export const firebaseConfig = {
@@ -39,7 +40,8 @@ export const firebaseAuthConfig = {
     PerfilPage,
     AddArticlePage,
     MyArticlesPage,
-    ArticlePage
+    ArticlePage,
+    MyFavoritesPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -54,7 +56,8 @@ export const firebaseAuthConfig = {
     PerfilPage,
     AddArticlePage,
     MyArticlesPage,
-    ArticlePage
+    ArticlePage,
+    MyFavoritesPage
   ],
   providers: [
     StatusBar,
