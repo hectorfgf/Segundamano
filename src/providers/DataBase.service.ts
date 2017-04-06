@@ -60,5 +60,10 @@ export class DBservice {
     this.firebase.auth.logout();
     localStorage.removeItem("useruid");
   }
-
+  changeName(nombre2, uid){
+    this.firebase.database.object("/usuarios/"+uid).update({nombre: nombre2});
+  }
+  changePhone(numero, uid){
+    this.firebase.database.object("/usuarios/"+uid).update({telefono: numero});
+  }
 }

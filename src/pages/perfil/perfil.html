@@ -13,13 +13,31 @@
   <div *ngFor="let a of profile | async">
     <div class="contenedor"><img class="imagen" *ngIf="a.$key == 'imagen'" src="{{a.$value}}"></div>
   </div>
+  <ion-list >
   <div *ngFor="let a of profile | async">
-    <ion-list *ngIf="a.$key != 'imagen'">
-      <ion-item>
-        <label>{{a.$key}}:</label>
-        {{a.$value}}
+
+      <ion-item margin-top *ngIf="a.$key == 'nombre'" (click)="changeName()">
+        <ion-icon  name="ios-at-outline" item-left></ion-icon>
+        Nombre:
+        <ion-note item-right>
+          {{a.$value}}
+        </ion-note>
       </ion-item>
-    </ion-list>
+    <ion-item margin-top *ngIf="a.$key == 'correo'" (click)="changeEmail()">
+      <ion-icon name="ios-mail" item-left></ion-icon>
+      Correo
+      <ion-note item-right>
+        {{a.$value}}
+      </ion-note>
+    </ion-item>
+    <ion-item margin-top *ngIf="a.$key == 'telefono'" (click)="changePhone()">
+      <ion-icon *ngIf="a.$key == 'telefono'" name="ios-phone-portrait" item-left></ion-icon>
+      Telefono:
+      <ion-note item-right>
+        {{a.$value}}
+      </ion-note>
+    </ion-item>
   </div>
+  </ion-list>
 
 </ion-content>
