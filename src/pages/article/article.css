@@ -1,0 +1,10 @@
+page-article .imagen {
+  width: 200px;
+  height: 200px;
+  display: block;
+  margin: 0 auto 0 auto; }
+page-article .linea {
+  height: 3px;
+  background-color: #0c60ee; }
+
+/*# sourceMappingURL=article.css.map */

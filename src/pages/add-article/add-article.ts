@@ -3,6 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import {AngularFire, FirebaseListObservable} from "angularfire2";
 import {DBservice} from "../../providers/DataBase.service";
 import {Page1} from "../page1/page1";
+import {Camera} from 'ionic-native';
+
 
 @Component({
   selector: 'page-add-article',
@@ -11,6 +13,7 @@ import {Page1} from "../page1/page1";
 export class AddArticlePage {
 
   categorias: FirebaseListObservable<any>;
+  foto: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private db: DBservice, public firebase: AngularFire) {
     this.categorias = this.db.getCategorias();

@@ -9,7 +9,7 @@
 
 <ion-content padding>
 
-  <ion-card *ngFor="let a of articulos | async" class="dimension-card" (click)="probar()">
+  <ion-card *ngFor="let a of articulos | async" class="dimension-card" (click)="articulo(a.$key)">
     <ion-item>
       <ion-row>
         <ion-col>

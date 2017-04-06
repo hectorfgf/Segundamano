@@ -4,6 +4,7 @@ import {NavController,} from 'ionic-angular';
 import {DBservice} from '../../providers/providers';
 import {FirebaseListObservable} from "angularfire2";
 import {AddArticlePage} from "../add-article/add-article";
+import {ArticlePage} from "../article/article";
 
 
 @Component({
@@ -18,8 +19,9 @@ export class Page1 {
     this.articulos = this.db.getArticles();
   }
 
-  probar(){
-    console.log("articulos: " + this.articulos);
+  articulo(key: any){
+    this.navCtrl.push(ArticlePage, key);
+    console.log("articulos: " + key);
   }
   addArticulo(){
     this.navCtrl.push(AddArticlePage);
