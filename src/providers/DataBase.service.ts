@@ -89,4 +89,13 @@ export class DBservice {
   changePhoto(photo, uid){
     this.firebase.database.object("/usuarios/"+uid).update({imagen: photo});
   }
+  getArticlesUser(uid){
+    return this.firebase.database.list('/usuarios/'+uid+'/mis-articulos',{ preserveSnapshot: true});
+  }
+  getArticle(uid){
+    return this.firebase.database.list('/articulos/'+uid,{ preserveSnapshot: true});
+  }
+  getArticles2(){
+    return this.firebase.database.list('/articulos',{ preserveSnapshot: true});
+  }
 }

@@ -11,6 +11,7 @@ import {LoginPage} from "../pages/login/login";
 import {LogoutComponent} from "../components/logout/logout";
 import {CrearCuentaPage} from "../pages/crear-cuenta/crear-cuenta";
 import {PerfilPage} from "../pages/perfil/perfil";
+import {MyArticlesPage} from "../pages/my-articles/my-articles";
 
 @Component({
   templateUrl: 'app.html',
@@ -36,13 +37,13 @@ export class MyApp {
         { title: 'Login', component: LoginPage },
         { title: 'Articulos en venta', component: Page1 },
         { title: 'Page Two', component: Page2 },
-        { title: 'Crear cuenta', component: CrearCuentaPage}
+        { title: 'Crear cuenta', component: CrearCuentaPage},
       ];
     }else{
       this.pages = [
         { title: 'Perfil', component: PerfilPage },
         { title: 'Articulos en venta', component: Page1 },
-        { title: 'Page Two', component: Page2 }
+        { title: 'Mis articulos', component: MyArticlesPage },
       ];
     }
 
@@ -74,7 +75,7 @@ export class MyApp {
       this.pages = [
         { title: 'Perfil', component: PerfilPage },
         { title: 'Articulos en venta', component: Page1 },
-        { title: 'Page Two', component: Page2 }
+        { title: 'Mis articulos', component: MyArticlesPage }
       ];
     }
   }

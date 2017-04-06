@@ -13,6 +13,7 @@ import {LoginPage} from "../pages/login/login";
 import {CrearCuentaPage} from "../pages/crear-cuenta/crear-cuenta";
 import {PerfilPage} from "../pages/perfil/perfil";
 import {AddArticlePage} from "../pages/add-article/add-article";
+import {MyArticlesPage} from "../pages/my-articles/my-articles";
 
 
 export const firebaseConfig = {
@@ -37,7 +38,8 @@ export const firebaseAuthConfig = {
     LoginPage,
     CrearCuentaPage,
     PerfilPage,
-    AddArticlePage
+    AddArticlePage,
+    MyArticlesPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -51,7 +53,8 @@ export const firebaseAuthConfig = {
     LoginPage,
     CrearCuentaPage,
     PerfilPage,
-    AddArticlePage
+    AddArticlePage,
+    MyArticlesPage
   ],
   providers: [
     StatusBar,
