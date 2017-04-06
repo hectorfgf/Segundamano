@@ -108,4 +108,13 @@ export class DBservice {
       });
     });
   }
+  removeFav(anuncio, uid){
+    this.firebase.database.list('/usuarios/' + uid + "/mis-favoritos").remove(anuncio);
+  }
+  removeMyArticle(anuncio, uid){
+    this.firebase.database.list('/usuarios/' + uid + "/mis-articulos").remove(anuncio);
+  }
+  removeArticle(anuncio){
+    this.firebase.database.list('/articulos').remove(anuncio);
+  }
 }

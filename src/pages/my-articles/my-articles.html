@@ -8,21 +8,28 @@
 </ion-header>
 
 <ion-content padding>
-
-  <ion-card *ngFor="let a of arrayarticulos" class="dimension-card" (click)="articulo(a.key)">
-    <ion-item>
-      <ion-row>
-        <ion-col>
-          <h2>{{a.titulo}}</h2>
-          <p>{{a.precio}}€</p>
-        </ion-col>
-      </ion-row>
-    </ion-item>
-    <div class="dimension-photo">
-      <img src="{{a.imagen}}" class="imagen">
-    </div>
-  </ion-card>
-
+  <div *ngFor="let a of arrayarticulos">
+    <ion-card  *ngIf="a.precio != null" class="dimension-card">
+      <ion-item>
+        <ion-row>
+          <ion-col item-left (click)="articulo(a.key)">
+            <h2 style="width: 200px">{{a.titulo}}</h2>
+          </ion-col>
+          <ion-col item-right (click)="remove(a.key2,a.key)">
+            <ion-icon  name="close"></ion-icon>
+          </ion-col>
+        </ion-row>
+        <ion-row (click)="articulo(a.key)">
+          <ion-col>
+            <p>{{a.precio}}€</p>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      <div class="dimension-photo" (click)="articulo(a.key)">
+        <img src="{{a.imagen}}" class="imagen">
+      </div>
+    </ion-card>
+  </div>
   <ion-fab right bottom>
     <button ion-fab color="light" (click)="addArticulo()"><ion-icon name="add"></ion-icon></button>
   </ion-fab>

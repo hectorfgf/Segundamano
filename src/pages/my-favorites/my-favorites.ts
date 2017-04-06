@@ -20,6 +20,8 @@ export class MyFavoritesPage {
   i=0;
 
   constructor(public navCtrl: NavController,private db: DBservice) {
+    this.arrayarticulos = [];
+    this.i = 0;
     localStorage.getItem("useruid") ? this.user = localStorage.getItem("useruid") : this.user = null;
     this.db.getFavUser(this.user).subscribe((snapshots) => {
       snapshots.forEach(snapshot => {
@@ -33,7 +35,8 @@ export class MyFavoritesPage {
                 precio: snapshot2.val().precio,
                 titulo: snapshot2.val().titulo,
                 imagen: snapshot2.val().imagen,
-                key: snapshot2.key
+                key: snapshot2.key,
+                key2: snapshot.key
               }
               this.i = this.i + 1;
             };
@@ -41,6 +44,11 @@ export class MyFavoritesPage {
         });
       });
     });
+  }
+
+  remove(anuncio){
+    this.db.removeFav(anuncio, this.user);
+    this.navCtrl.setRoot(MyFavoritesPage);
   }
 
   articulo(key: any){

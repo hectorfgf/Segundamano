@@ -17,6 +17,8 @@ export class MyArticlesPage {
   i=0;
 
   constructor(public navCtrl: NavController,private db: DBservice) {
+    this.arrayarticulos = [];
+    this.i = 0;
     localStorage.getItem("useruid") ? this.user = localStorage.getItem("useruid") : this.user = null;
     this.db.getArticlesUser(this.user).subscribe((snapshots) => {
       snapshots.forEach(snapshot => {
@@ -30,7 +32,8 @@ export class MyArticlesPage {
                 precio: snapshot2.val().precio,
                 titulo: snapshot2.val().titulo,
                 imagen: snapshot2.val().imagen,
-                key: snapshot2.key
+                key: snapshot2.key,
+                key2: snapshot.key
               }
               this.i = this.i + 1;
             };
@@ -40,6 +43,11 @@ export class MyArticlesPage {
     });
   }
 
+  remove(myarticle, article){
+    this.db.removeArticle(article);
+    this.db.removeMyArticle(myarticle,this.user);
+    this.navCtrl.setRoot(MyArticlesPage);
+  }
   addArticulo(){
     this.navCtrl.push(AddArticlePage);
   }
