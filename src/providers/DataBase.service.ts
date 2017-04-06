@@ -38,6 +38,24 @@ export class DBservice {
       }).then((echo) => {resolve(echo.uid)});
     });
   }
+
+  addAnuncio (categoria, descripcion, lugar, precio, titulo ){
+    return new Promise ( resolve => {
+      let aux = this.firebase.database.list('/articulos').push({
+        categoria: categoria,
+        descripcion: descripcion,
+        lugar: lugar,
+        precio: precio,
+        titulo: titulo
+      });
+
+        let uid = localStorage.getItem('useruid')
+        this.firebase.database.list('/usuarios/' + uid + "/mis-articulos").push(aux.key);
+        this.firebase.database.list('/categoria/' + categoria + "/").push(aux.key);
+        resolve(true);
+    });
+  }
+
   addUserData(uid, name, email, telefono){
     return new Promise(resolve=>{
       this.firebase.database.object('/usuarios/' + uid).set({
