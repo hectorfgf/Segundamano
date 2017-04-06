@@ -41,6 +41,22 @@ export class PerfilPage {
       });
     });
   }
+  selecPicture(){
+    this.platform.ready().then(() => {
+      Camera.getPicture({
+        destinationType: Camera.DestinationType.DATA_URL,
+        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+        targetWidth: 1000,
+        targetHeight: 1000
+      }).then((imagen) => {
+        console.log(imagen);
+        this.base64Image = "data:image/jpeg;base64," + imagen;
+        this.db.changePhoto(this.base64Image, this.uid);
+      }, (err) => {
+        console.log(err);
+      });
+    });
+  }
 
   comprobar(){
     console.log(this.profile);
@@ -119,6 +135,12 @@ export class PerfilPage {
           text: 'Tomar foto',
           handler: () => {
             this.takePicture();
+          }
+        },
+        {
+          text: 'Seleccionar foto',
+          handler: () => {
+            this.selecPicture();
           }
         }
       ]

@@ -11,6 +11,8 @@
 
   <form #form="ngForm" (ngSubmit)="createNewAnuncio(form)">
     <ion-list>
+      <button ion-button full (click)="addImage()">Añadir foto</button>
+      <img *ngIf="base64Image" [src]="domSanitizer.bypassSecurityTrustUrl(base64Image)">
       <ion-item style="padding-left: 0" class="inputs">
         <ion-input  type="text" placeholder="Titulo" name="titulo" ngModel required></ion-input>
       </ion-item >
@@ -18,9 +20,10 @@
         <ion-input type="text" placeholder="Localización" name="lugar" ngModel required></ion-input>
       </ion-item>
       <ion-item style="padding-left: 0" class="inputs">
-        <ion-input type="num" placeholder="Precio" name="precio" ngModel required></ion-input>
+        <ion-input type="number" placeholder="Precio" name="precio" ngModel required></ion-input>
       </ion-item>
-      <ion-item style="padding-left: 0" class="inputs">
+      <ion-item style="padding-left: 0" class="inputs" >
+        <ion-label style="margin-left: 8px">Categoria: </ion-label>
         <ion-select  name="categoria" ngModel required>
           <ion-option *ngFor="let c of categorias | async">{{c.$key}}</ion-option>
         </ion-select>
@@ -28,9 +31,7 @@
       <ion-item style="padding-left: 0" class="inputs">
         <ion-textarea placeholder="Escriba una descripción..." name="descripcion" ngModel required></ion-textarea>
       </ion-item>
-      <button ion-button full (click)="addImage()">Añadir foto</button>
-      <img *ngIf="base64Image" [src]="domSanitizer.bypassSecurityTrustUrl(base64Image)">
-      <button style="margin-top: 30px;" type="submit" ion-button>Añadir</button>
+      <button style="margin-top: 30px;" type="submit" [disabled]="!form.value.titulo|| !form.value.lugar || !form.value.precio ||!form.value.categoria || !form.value.descripcion" ion-button>Añadir</button>
     </ion-list>
   </form>
 

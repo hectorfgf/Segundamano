@@ -43,6 +43,21 @@ export class AddArticlePage {
       });
     });
   }
+  selecPicture(){
+    this.platform.ready().then(() => {
+      Camera.getPicture({
+        destinationType: Camera.DestinationType.DATA_URL,
+        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+        targetWidth: 1000,
+        targetHeight: 1000
+      }).then((imagen) => {
+        console.log(imagen);
+        this.base64Image = "data:image/jpeg;base64," + imagen;
+      }, (err) => {
+        console.log(err);
+      });
+    });
+  }
   addImage(){
     let popup = this.alertCtrl.create({
       title: 'Añade la imagen de tu anuncio',
@@ -55,6 +70,12 @@ export class AddArticlePage {
           text: 'Tomar foto',
           handler: () => {
             this.takePicture();
+          }
+        },
+        {
+          text: 'Seleccionar Foto',
+          handler: () => {
+            this.selecPicture();
           }
         }
       ]
