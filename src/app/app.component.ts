@@ -4,7 +4,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { Page1 } from '../pages/page1/page1';
-import { Page2 } from '../pages/page2/page2';
 
 import {DBservice} from '../providers/providers';
 import {LoginPage} from "../pages/login/login";
@@ -36,7 +35,6 @@ export class MyApp {
       this.pages = [
         { title: 'Login', component: LoginPage },
         { title: 'Articulos en venta', component: Page1 },
-        { title: 'Page Two', component: Page2 },
         { title: 'Crear cuenta', component: CrearCuentaPage},
       ];
     }else{
@@ -68,7 +66,6 @@ export class MyApp {
       this.pages = [
         { title: 'Login', component: LoginPage },
         { title: 'Articulos en venta', component: Page1 },
-        { title: 'Page Two', component: Page2 },
         { title: 'Crear cuenta', component: CrearCuentaPage}
       ];
     }else{
@@ -84,7 +81,6 @@ export class MyApp {
     this.pages = [
       { title: 'Login', component: LoginPage },
       { title: 'Articulos en venta', component: Page1 },
-      { title: 'Page Two', component: Page2 },
       { title: 'Crear cuenta', component: CrearCuentaPage}
     ];
     this.nav.setRoot(Page1);
