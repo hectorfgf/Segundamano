@@ -9,8 +9,14 @@ import {Page1} from "../page1/page1";
   templateUrl: 'login.html'
 })
 export class LoginPage {
+  uid:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private db: DBservice) {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private db: DBservice) {}
+    localStorage.getItem("useruid") ? this.uid = localStorage.getItem("useruid") : this.uid = null;
+    if(this.uid != null){
+      this.navCtrl.setRoot(Page1);
+    }
+  }
 
   login(form: any){
     this.db.login(form.value.email,form.value.password).then(data => {
@@ -22,6 +28,7 @@ export class LoginPage {
   logout(){
     this.db.deslogueo();
     this.navCtrl.setRoot(Page1);
+
   }
 
 }

@@ -1,7 +1,7 @@
 
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -10,17 +10,16 @@
 
 </ion-header>
 
-
 <ion-content padding>
   <form #form="ngForm" (ngSubmit)="login(form)">
     <ion-list>
       <ion-item style="padding-left: 0" class="inputs">
-        <ion-label style="color: white;">Username</ion-label>
+        <ion-label >Email</ion-label>
         <ion-input type="email" name="email" ngModel required></ion-input>
       </ion-item>
 
       <ion-item style="padding-left: 0" class="inputs">
-        <ion-label style="color: white;">Password</ion-label>
+        <ion-label >Contraseña</ion-label>
         <ion-input type="password" name="password" ngModel required></ion-input>
       </ion-item>
 
