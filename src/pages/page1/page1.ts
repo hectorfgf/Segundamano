@@ -13,9 +13,11 @@ import {AddArticlePage} from "../add-article/add-article";
 export class Page1 {
 
   articulos: FirebaseListObservable<any>;
+  user:any;
 
   constructor(public navCtrl: NavController,private db: DBservice) {
     this.articulos = this.db.getArticles();
+    localStorage.getItem("useruid") ? this.user = localStorage.getItem("useruid") : this.user = null;
   }
 
   probar(){
