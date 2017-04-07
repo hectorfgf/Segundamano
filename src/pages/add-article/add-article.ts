@@ -24,7 +24,7 @@ export class AddArticlePage {
   }
 
   createNewAnuncio(form: any){
-    this.db.addAnuncio(form.value.categoria, form.value.descripcion, form.value.lugar, form.value.precio, form.value.titulo,this.base64Image).then(data => {
+    this.db.addAnuncio(form.value.categoria, form.value.descripcion, form.value.lugar, form.value.precio, form.value.titulo,this.base64Image,this.uid).then(data => {
       if (data){
         this.navCtrl.setRoot(Page1);
       }
