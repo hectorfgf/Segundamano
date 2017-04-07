@@ -12,17 +12,18 @@
       <div class="dimension-photo">
         <img src="{{i.imagen}}" class="imagen">
       </div>
+      <div class="linea"></div>
       <h3>Descripción</h3>
-      <div class="linea"></div>
       <p>{{i.descripcion}}</p>
+      <div class="linea"></div>
       <h3>Precio</h3>
-      <div class="linea"></div>
       <p>{{i.precio}}€</p>
-      <h3>Localización de venta</h3>
       <div class="linea"></div>
+      <h3>Localización de venta</h3>
       <p>{{i.lugar}}</p>
+      <div class="linea contacto"></div>
       <div *ngFor="let c of contacto | async">
-        <div class="linea" *ngIf="c.$key == i.propietario">
+        <div *ngIf="c.$key == i.propietario">
           <h3>Contacto</h3>
           <ion-item>
             <ion-avatar item-left>
