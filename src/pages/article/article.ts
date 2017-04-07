@@ -15,11 +15,13 @@ export class ArticlePage {
   anuncio: any;
   informacion: FirebaseListObservable<any>;
   user:any;
+  contacto: FirebaseListObservable<any>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public db: DBservice) {
     this.anuncio = this.navParams.data;
     localStorage.getItem("useruid") ? this.user = localStorage.getItem("useruid") : this.user = null;
     this.informacion = this.db.getArticles();
+    this.contacto = this.db.getContact();
   }
   addfav(){
     this.db.addFav(this.anuncio, this.user).then((data)=>{

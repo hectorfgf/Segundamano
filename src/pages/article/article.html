@@ -22,6 +22,14 @@
       <h3>Localización de venta</h3>
       <div class="linea"></div>
       <p>{{i.lugar}}</p>
+      <div *ngFor="let c of contacto | async">
+      <div class="linea" *ngIf="c.$key == i.propietario">
+        <h3>Contacto</h3>
+      <p>Nombre: {{c.nombre}}</p>
+        <p>Correo: {{c.correo}}</p>
+        <p>Teletono: {{c.telefono}}</p>
+      </div>
+      </div>
     </div>
   </div>
 

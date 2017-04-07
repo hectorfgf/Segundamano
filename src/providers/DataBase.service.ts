@@ -52,6 +52,10 @@ export class DBservice {
   getProfile(uid){
     return this.firebase.database.list('/usuarios/'+uid);
   }
+  getContact(){
+    return this.firebase.database.list('/usuarios');
+  }
+
   getArticles(){
     return this.firebase.database.list('/articulos');
   }
@@ -66,7 +70,7 @@ export class DBservice {
   changePhone(numero, uid){
     this.firebase.database.object("/usuarios/"+uid).update({telefono: numero});
   }
-  addAnuncio (categoria, descripcion, lugar, precio, titulo,imagen){
+  addAnuncio (categoria, descripcion, lugar, precio, titulo,imagen, uid){
     return new Promise ( resolve => {
       let aux = this.firebase.database.list('/articulos').push({
         categoria: categoria,
@@ -74,10 +78,9 @@ export class DBservice {
         lugar: lugar,
         precio: precio,
         titulo: titulo,
-        imagen: imagen
+        imagen: imagen,
+        propietario: uid
       });
-
-      let uid = localStorage.getItem('useruid')
       this.firebase.database.list('/usuarios/' + uid + "/mis-articulos").push(aux.key);
       this.firebase.database.list('/categoria/' + categoria + "/").push(aux.key);
       resolve(true);
